@@ -50,10 +50,10 @@ Versie 1.5 werd opgestart tijdens de ontwikkeling van 1.4 en heeft er toe geleid
     2. Voorman start de functie BestandenZoeken, welke op de door de gebruiker aangewezen export-locatie alle zaak- en document-XMLs gaat indexeren
     3. Voorman start vervolgens op basis van de teller van BestandenZoeker (aantal_zaken en aantal_docs) de functie StappenDoorlopen net zo vaak op als het aantal zaken en documenten gevonden zijn.
     4. De functie StappenDoorlopen bepaalt eerst of het de bedoeling is dat datum-splits worden toegepast. Vervolgens doorloopt het 4 stappen:
-      I. Events: op dt moment worden hier enkel de datum-velden van events gesplitst. StappenDoorlopen roept hier Datum_aanpassen_standaard op.
-      II. Relaties: Indien het een zaak-document betreft (dit geeft de Voorman mee) dan start StappenDoorlopen hier de functie Relaties_verwerken
-      III. Losse velden: dit is de eerder genoemde mulit-call. Datum_aanpassen_standaard wordt hier in totaal 11 keer opgeroepen, 3x als het een document betreft, 7x als het een zaak betreft en 1x om het overzicht van relaties weg te schrijven (zie hierna)
-      IV. XML opslaan: zodra alle verwerkingen op het bestand zijn uitgevoerd (stappen I-III) dan worden hier vervolgens de bestandsnaam en de opslaglocatie bepaald en het bestand daadwerkelijk opgeslagen.
+      1). Events: op dt moment worden hier enkel de datum-velden van events gesplitst. StappenDoorlopen roept hier Datum_aanpassen_standaard op.
+      2). Relaties: Indien het een zaak-document betreft (dit geeft de Voorman mee) dan start StappenDoorlopen hier de functie Relaties_verwerken
+      3). Losse velden: dit is de eerder genoemde mulit-call. Datum_aanpassen_standaard wordt hier in totaal 11 keer opgeroepen, 3x als het een document betreft, 7x als het een zaak betreft en 1x om het overzicht van relaties weg te schrijven (zie hierna)
+      4). XML opslaan: zodra alle verwerkingen op het bestand zijn uitgevoerd (stappen I-III) dan worden hier vervolgens de bestandsnaam en de opslaglocatie bepaald en het bestand daadwerkelijk opgeslagen.
     5. De functie Datum_aanpassen_standaard leest de waarde uit van het door StappenDoorlopen opgegeven veld en splitst dit vervolgens in 2 nieuwe nodes, die aan het einde van de meegegeven node worden geplakt. Voor events is dat in het event, voor relaties in de relatie, voor de rest is dat aan het einde van de values-node.
       Datum_aanpassen kan, zoals aangekondigd, ook de volledige relaties plakken als #### (relatietype),... Dit gebeurd als Relatie koppelen is aangezet. Het wordt hier opgeroepen omdat dit pas kan worden uitgevoerd als het script in de values-node is aanbeland en alle relaties heeft verwerkt. (kan technisch gezien wel eerder, maar dat had tot meer code geleidt)
      6. De functie Relaties_verwerken vertaalt (indien aangevinkt) en koppelt (indien aangevinkt) de relaties. Dit leidt tot een extra node in elke relatie-node met de opmaak #### (relatietype). De vertaling wordt door Opstarten uit het standaardwaarden-xmlbestand gehaald. 
@@ -61,9 +61,9 @@ Versie 1.5 werd opgestart tijdens de ontwikkeling van 1.4 en heeft er toe geleid
      7. De Voorman eindigt vervolgens het draaiende script en werkt de GUI bij. De gebruiker wordt verzocht om het venster te sluiten.
      8. Alle overige functies zijn verbonden aan de werking van de GUI. 
 
-====================================================================================================================================================
+Toekomstige ontwikkelingen
+============================================================================================
 
-**Toekomstige ontwikkelingen:**
 2020:
 - Vertaling van documentlabels
 
