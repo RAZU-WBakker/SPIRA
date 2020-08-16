@@ -46,22 +46,23 @@ $Xaml = @"
 " Margin="37,6,0,0" Name="Button_WeetZeker" IsEnabled="True"/>
 <Button Content="Start SPIRA" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="36.33331298828125,40,0,0" IsEnabled="False" Name="Button_run_spira"/>
 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Uitvoer:" Margin="37,65,0,0" FontWeight="Bold"/>
-<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[[SPIRA is inactief]]" Margin="37,95,0,0" Name="SPIRA_Uitvoer"/>
+<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[Volgt na voltooïng]" Margin="37,95,0,0" Name="SPIRA_Uitvoer"/>
 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Status:" Margin="275,65,0,0" FontWeight="Bold"/>
-<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[[SPIRA is inactief]]" Margin="275,95,0,0" Name="SPIRA_Status"/>
+<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[Volgt na voltooïng]" Margin="275,95,0,0" Name="SPIRA_Status"/>
 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Huidige stap:" Margin="275,130,0,0" FontWeight="Bold"/>
-<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[[SPIRA is inactief]]" Margin="275,160,0,0" Name="SPIRA_Stap"/>
-<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Aantaal zaken:" Margin="275,195,0,0" FontWeight="Bold"/>
-<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[[SPIRA is inactief]]" Margin="275,225,0,0" Name="SPIRA_Aantal_Zaken"/>
+<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[Volgt na voltooïng]" Margin="275,160,0,0" Name="SPIRA_Stap"/>
+<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Aantal zaken:" Margin="275,195,0,0" FontWeight="Bold"/>
+<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[Volgt na voltooïng]" Margin="275,225,0,0" Name="SPIRA_Aantal_Zaken"/>
 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Aantal documenten:" Margin="275,260,0,0" FontWeight="Bold"/>
-<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[[SPIRA is inactief]]" Margin="275,290,0,0" Name="SPIRA_Aantal_Docs"/>
+<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[Volgt na voltooïng]" Margin="275,290,0,0" Name="SPIRA_Aantal_Docs"/>
 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Aantal relaties:" Margin="425,195,0,0" FontWeight="Bold"/>
-<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[[SPIRA is inactief]]" Margin="425,225,0,0" Name="SPIRA_Aantal_relaties"/>
+<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[Volgt na voltooïng]" Margin="425,225,0,0" Name="SPIRA_Aantal_relaties"/>
 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Aantal splits:" Margin="425,260,0,0" FontWeight="Bold"/>
-<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[[SPIRA is inactief]]" Margin="425,290,0,0" Name="SPIRA_Aantal_splits"/>
+<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="[Volgt na voltooïng]" Margin="425,290,0,0" Name="SPIRA_Aantal_splits"/>
 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Aantal labels:" Margin="575,195,0,0" FontWeight="Bold"/>
 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Deze optie is nog niet beschikbaar" Margin="575,225,0,0" Name="SPIRA_Aantal_labels"/>
-  </Grid></TabItem>
+<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="LET OP: NA KLIKKEN START GAAT HET SCRIPT DRAAIEN. DE INTERFACE UPDATE PAS NA VOLOOÏNG. DIT KAN ENKELE MINUTEN DUREN." Margin="107,320,0,0" FontWeight="Bold" FontSize="8"/>  
+</Grid></TabItem>
   </TabControl>
 </Grid>
 </Window>
@@ -288,7 +289,7 @@ foreach($x in $blobs)
 }
 function StappenDoorlopen($soort)
 {
-    if(($Button_DS_docs.IsChecked -eq $true -and $soort -eq 'Document')-or ($Button_DS_zaken.IsChecked -eq $true -and $soort -eq 'Zaak'))#nog aanpassen aan checklist-variabelen
+    if(($Button_DS_docs.IsChecked -eq $true -and $soort -eq 'Document')-or ($Button_DS_zaken.IsChecked -eq $true -and $soort -eq 'Zaak'))
     {
         $SDL_split = 1
         
