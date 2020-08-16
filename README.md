@@ -19,24 +19,24 @@ Ontwikkeling aan 1.4 startte snel na 1.3 en was met name gericht op het verder m
 De ontwikkeling van 1.4 is halverwege gestaakt met de opstart van versie 1.5
 
 *Ontwikkelde functionaliteiten van versie 1.4 voor overgang naar 1.5*
-	Powershell
-		- Overgestapt op Powershell 7 (originele script geschreven in PS 5)
-	Modulariteit:
-		- alle afzonderlijke onderdelen als functies in het script gebouwd. 
-		- User-input van losse vragen omgezet naar de SPIRA-opties xml.
-		- Opties uit de XML worden nu gebruikt om te bepalen welke onderdelen worden uitgevoerd, en waar een bestand wordt opgeslagen en onder welke naam. (was hard-coded in de vorige versie)
-	Nieuwe functies:
-		- Function: Opties Inladen: laadt de opties-XML in en toont de opties aan de gebruiker. Geeft tevens foutmeldingen als de opties verkeerd zijn ingevuld.
-		- Function: Tobeornottobe: Aangezien opties nu automatisch worden ingeladen, ipv individueel worden gevraagd, geeft Tobeornottobe de gebruiker de mogelijkheid om het script te stoppen als een optie niet klopt. Wordt tevens gebruikt voor andere bijzonderheden.
-	Vervallen functies:
-		- Function: Overschrijven -> vervallen door invoering van de opties-XML
-		- Function: alt-pad -> Vervallen door invoering van de opties-XML
-	Diversen:
-		- Write-Host teksten opgeschoond en uniform gemaakt
-		- Kleurcoderingen toegepast op de output, zodat de output sneller te begrijpen / lezen is.
-		- Comments geschoond, grootste deel van de uitleg verplaatst naar de opties-XML
-		- Script geplaatst onder de CC BY-NC-SA 4.0-Internationaal licentie
-		- Gebruikers krijgen nu een foutmelding als er geen zaken zijn gevonden. 
+- Powershell
+	1. Overgestapt op Powershell 7 (originele script geschreven in PS 5)
+- Modulariteit
+	2. alle afzonderlijke onderdelen als functies in het script gebouwd. 
+	3. User-input van losse vragen omgezet naar de SPIRA-opties xml.
+	4. Opties uit de XML worden nu gebruikt om te bepalen welke onderdelen worden uitgevoerd, en waar een bestand wordt opgeslagen en onder welke naam. (was hard-coded in de vorige versie)
+- Nieuwe functies:
+	1. Function: Opties Inladen: laadt de opties-XML in en toont de opties aan de gebruiker. Geeft tevens foutmeldingen als de opties verkeerd zijn ingevuld.
+	2. Function: Tobeornottobe: Aangezien opties nu automatisch worden ingeladen, ipv individueel worden gevraagd, geeft Tobeornottobe de gebruiker de mogelijkheid om het script te stoppen als een optie niet klopt. Wordt tevens gebruikt voor andere bijzonderheden.
+- Vervallen functies:
+	1. Function: Overschrijven -> vervallen door invoering van de opties-XML
+	2. Function: alt-pad -> Vervallen door invoering van de opties-XML
+- Diversen:
+	1. Write-Host teksten opgeschoond en uniform gemaakt
+	2. Kleurcoderingen toegepast op de output, zodat de output sneller te begrijpen / lezen is.
+	3. Comments geschoond, grootste deel van de uitleg verplaatst naar de opties-XML
+	4. Script geplaatst onder de CC BY-NC-SA 4.0-Internationaal licentie
+	5. Gebruikers krijgen nu een foutmelding als er geen zaken zijn gevonden. 
 
 
 **Versie 1.5**
