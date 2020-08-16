@@ -6,8 +6,9 @@ SPIRA is ontwikkeld door het Regionaal Archief Zuid-Utrecht (RAZU) en beschikbaa
 Ondersteuning voor gebruik door derden wordt niet aangeboden. Gebruik is op eigen kracht en eigen risico. 
 
 SPIRA is ontwikkeld met dank aan PoshGUI.com voor het leveren van de tools om simpel een XAML-GUI te maken. Alle overige code is door het RAZU zelf ontwikkeld, uiteraard met gebruik van voorbeelden via Google gevonden. 
+
+SPIRA versies:
 ============================================================================================
-**SPIRA versies:**
 versies 1 t/m 3 heetten DnTSplitser, vernoemd naar de originele gewenste functionaliteit voor het splitsen van de datum-tijd velden in de XML in twee velden, datum en tijd.
 
 **Versie 1.3**
@@ -61,7 +62,8 @@ Versie 1.5 werd opgestart tijdens de ontwikkeling van 1.4 en heeft er toe geleid
      8. Alle overige functies zijn verbonden aan de werking van de GUI. 
 
 ====================================================================================================================================================
-Toekomstige ontwikkelingen:
+
+**Toekomstige ontwikkelingen:**
 2020:
 - Vertaling van documentlabels
 
