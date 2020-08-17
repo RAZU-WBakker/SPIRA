@@ -3,128 +3,17 @@
 							SCRIPT voor PRE-INGEST RAZU [SPIRA]
 SPIRA is een PowerShell script ontwikkeld door het RAZU voor het aanpassen van XML-bestanden in de pre-ingestfase van zijn e-depot. Het is ontwikkeld voor en getest op exports van Zaaksysteem.nl, welke zich houden aan TOPx versie 2.3 van het Nationaal Archief.
 Het script en bijbehorend optiebestand vallen onder de algemene Creative Commons Naamsvermelding-NietCommercieel-GelijkDelen 4.0 Internationaal-licentie van het RAZU. Dit betekent dat het script vrijelijk kan worden hergebruikt, mits de hergebruiker het niet voor commerciële doeleinden wordt gebruikt, en de resultaten van het hergebruik onder dezelfde(of een vrijere) licentie gedeeld worden door de hergebruiker.
-Het bestand dat u heeft geopend is het opties- en uitlegbestand. Het begint met de opties, die door SPIRA worden ingelezen. Vervolgens vindt u uitleg over de werking van SPIRA met numerieke verwijzingen.
+Het bestand dat u heeft geopend is het Standaardwaarden-bestand. Deze worden ingelezen door SPIRA om bepaalde waarden te wijzigen of selecteren. Voor Extra velden (toekomstige versie van SPIRA) dient een seperaat bestand te worden aangemaakt. 
 -->
 
 <!-- [[OPTIES]] -->
 <SPIRA versie="1.5" datum="06-08-2020">
-<!--Ondersteund-->
-	<OVERSCHRIJVEN>Nee</OVERSCHRIJVEN>
-	<ACHTERVOEGSEL>_SPIRA</ACHTERVOEGSEL>
-	<PAD>$PSScriptroot</PAD>
-	<ALT_OPSLAG>Nee</ALT_OPSLAG>
-	<ALT_PAD>$PSScriptroot</ALT_PAD>
-	<DATUM_SPLIT_ZAKEN>Ja</DATUM_SPLIT_ZAKEN>
-	<DATUM_SPLIT_DOCUMENTEN>Ja</DATUM_SPLIT_DOCUMENTEN>
-	<RELATIES_VERTALEN>Ja</RELATIES_VERTALEN>
-	<RELATIES_KOPPELEN>Ja</RELATIES_KOPPELEN>
-	<EXTRA_VELDEN>Ja</EXTRA_VELDEN>
-<!--Toekomstig-->
-	<ENKEL_GEWIJZIGD>Ja</ENKEL_GEWIJZIGD>
-	<CONTEXT_INJECTEREN>Nee</CONTEXT_INJECTEREN>
-	<INJECTIE_FORMAT>XML</INJECTIE_FORMAT>
-	<INJECTIE_BESTAND>C:\Users\Jantje\XMLs\Context.xml</INJECTIE_BESTAND>
+
 <!--Woordenboek vertaling relaties-->
 	<REL_CHILD>Deelzaak</REL_CHILD>
 	<REL_PARENT>Hoofdzaak</REL_PARENT>
 	<REL_PLAIN>Gerelateerd</REL_PLAIN>
 </SPIRA>
 
-<!--[[UITLEG]]-->
-<!-- 
-		Opties uitleg
-In de bovenstaande opties bepaal je welke onderdelen van het script worden uitgevoerd, of hoe ze worden uitgevoerd. Hier vindt je wat elke optie doet.
-OVERSCHRIJVEN
-	OVERSCHRIJVEN bepaalt of SPIRA de originele XML overschrijft, of dat er een extra XML-bestand wordt aangemaakt.
-	Syntax: Ja / Nee
-ACHTERVOEGSEL
-	ACHTERVOEGSEL bepaalt de toevoeging aan de XML naam indien er bij OVERSCHRIJVEN gekozen is om niet te overschrijven.
-	Syntax: Letters, getallen en underscores (_)
-PAD
-	PAD bepaalt het pad waarin SPIRA XMLs gaat zoeken. Standaard is $PSScriptroot, wat er voor zorgt dat SPIRA werkt in zijn eigen map. Let op: SPIRA is 'recursive', wat betekent dat het in zijn eigen map en alle onderliggende mappen zoekt. 
-	Syntax: Systeem-variable van PowerShell of een Windows-pad (bijv. C:\Users\Jantje\XMLs) Let op: het adres moet exact overeenkomen met Windows Explorer, dus zonder eind \ 
-ALT_OPSLAG
-	Indien er bij OVERSCHRIJVEN gekozen is om niet over te schrijven, kan je in ALT_OPSLAG kiezen om een andere opslaglocatie te kiezen voor de aangepaste XMLs. Indien hier Nee is ingevuld dan worden de alternatieve XMLs opgeslagen naast de originelen.
-	Syntax: Ja / Nee
-ALT_PAD
-	ALT_PAD bepaalt waar SPIRA de XMLs opslaat indien er bij ALT_OPSLAG voor ja is gekozen.
-	Syntax: Systeem-variable van PowerShell of een Windows-pad (bijv. C:\Users\Jantje\XMLs) Let op: het adres moet exact overeenkomen met Windows Explorer, dus zonder eind \ 
-DATUM_SPLIT_ZAKEN
-	DATUM_SPLIT_ZAKEN bepaalt of de datum-velden in zaken worden gesplitst in twee extra velden (_tijd en _datum)
-	Syntax: Ja / Nee
-DATUM_SPLIT_DOCUMENTEN
-	DATUM_SPLIT_DOCUMENTEN bepaalt of datum-velden in documenten worden gesplitst in twee extra velden (_tijd en _datum)
-	Syntax: Ja / Nee
-RELATIES_VERTALEN
-	RELATIES_VERTALEN bepaalt of de Engelstalige relatie-benamingen worden vertaald naar Nederlands. Child wordt Deelzaak, Parent wordt Hoofdzaak, Related wordt Gerelateerde zaak. 
-	Syntax: Ja / Nee
-RELATIES_KOPPELEN
-	RELATIES_KOPPELEN bepaalt of de velden related_object_id en relation_type samen in een nieuw veld worden gevoegd in de syntax: ##### (child/parent/related), ##### (child/parent/related). Let op: dit wordt voor RELATIES_VERTALEN uitgevoerd!
-	Syntax: Ja / Nee
-ENKEL-GEWIJZIGD [Nog niet geïmplementeerd!]
-	ENKEL-GEWIJZIGD bepaalt of de gewijzigde metadata in een los XML-bestand wordt gezet, zonder alle overige metadata. Let op: ENKEL-GEWIJZIGD op Ja zetten overschrijft OVERSCHRIJVEN. (ENKEL-GEWIJZIGD op Ja = OVERSCHRIJVEN op Nee)
-	Syntax: Ja / Nee
-CONTEXT_INJECTEREN [Nog niet geïmplementeerd!]
-	CONTEXT_INJECTEREN bepaalt of extra context uit een extern bestand in de XML wordt gezet.
-	Syntax: Ja / Nee
-INJECTIE_FORMAT [Nog niet geïmplementeerd!]
-	INJECTIE_FORMAT bepaalt de verwerkingswijze van het injectiebestand. Ondersteund zijn XML en CSV.
-	Syntax: CSV / XML
-INJECTIE_BESTAND [Nog niet geïmplementeerd!]
-	INJECTIE_BESTAND bepaalt welk bestand wordt geimporteerd. Let op: dit dient (voorlopig) met het volledige pad te worden ingevoerd.
-	Syntax: Windows-pad inclusief bestandsnaam en extensie (bijv. C:\Users\Jantje\XMLs\Context.xml) 
--->
-<!--
-		Script uitleg
-Het hele script is voorzien van korte uitleg om de verschillende script-blokjes te identificeren en het geheel leesbaar te houden. Hier vindt je de algemene uitleg over het script en de verschillende functions in het script.
 
-								[[VERSIEBEHEER]]
-Versie 1 t/m 3 waren DnTSplitser, het voorgaande script dat met verschillende iteraties enkel de datum en tijd kon splitsen en kon opslaan of overschrijven.
-Met versie 4 is het hele script modulair omgebouwd en hernoemd naar SPIRA, versie 1.4
-
-Nieuw in versie 4:
-	Powershell
-		- Overgestapt op Powershell 7 (originele script geschreven in PS 5)
-	Modulariteit:
-		- alle afzonderlijke onderdelen als functies in het script gebouwd. 
-		- User-input van losse vragen omgezet naar de SPIRA-opties xml.
-		- Opties uit de XML worden nu gebruikt om te bepalen welke onderdelen worden uitgevoerd, en waar een bestand wordt opgeslagen en onder welke naam. (was hard-coded in de vorige versie)
-	Nieuwe functies:
-		- Function: Opties Inladen: laadt de opties-XML in en toont de opties aan de gebruiker. Geeft tevens foutmeldingen als de opties verkeerd zijn ingevuld.
-		- Function: Tobeornottobe: Aangezien opties nu automatisch worden ingeladen, ipv individueel worden gevraagd, geeft Tobeornottobe de gebruiker de mogelijkheid om het script te stoppen als een optie niet klopt. Wordt tevens gebruikt voor andere bijzonderheden.
-	Vervallen functies:
-		- Function: Overschrijven -> vervallen door invoering van de opties-XML
-		- Function: alt-pad -> Vervallen door invoering van de opties-XML
-	Diversen:
-		- Write-Host teksten opgeschoond en uniform gemaakt
-		- Kleurcoderingen toegepast op de output, zodat de output sneller te begrijpen / lezen is.
-		- Comments geschoond, grootste deel van de uitleg verplaatst naar de opties-XML
-		- Script geplaatst onder de CC NNCGD-4.0-Internationaal licentie
-		- Gebruikers krijgen nu een foutmelding als er geen zaken zijn gevonden. 
-		
-	
-								[[FUNCTIES]]
-OptiesInladen
-	Dit deel leest het Opties-bestand in. Let op! SPIRA zoekt het optiebestand altijd in de map waar het zelf in staat!
-BestandenZoeken
-	Dit deel zoekt de XMLs van zaken en documenten door alle mapnamen en alle bestandsnamen met elkaar te vergelijken, er vanuitgaande dat in de export de naam van een export-folder gelijk is aan de naam van de zaak-xml.
-	In $gevonden_ worden de gevonden XMLs als array opgeslagen. Om enkel de namen straks er uit te halen worden er ook aantallen bijgehouden. 
-	FullName = met volledig pad en extensie, Name = met extensie, BaseName = zonder extensie, DirectoryName = naam van de folder (enkel voor zoeken van folders)
-ZakenVerwerken en BestandenVerwerken
-	Opgeroepen door een While-Loop op basis van de aantallen-variabele van BestandenZoeken.
-	De functies ZakenVerwerken en DocumentenVerwerken gaan, aan de hand van de in BestandenZoeken aangemaakte array-variabelen, de XMLs daadwerkelijk inladen en aanpassen, waarbij voor elke gevonden datum twee extra velden worden aangemaakt, een voor de tijd en een voor de datum. Daarna wordt de XML opgeslagen op de zelfde locatie als het origineel.	
-		XML inladen
-	Er wordt gebruik gemaakt van de ingebouwde -Xpath / XML functionaliteiten van Powershell. Dit script is geschreven in PS versie 5.
-	Allereerst wordt hier het pad van de aangewezen in een variabele, waarna een XML-variabele wordt aangewezen (deze wordt dan ook door PS als XML behandeld). Vervolgens wordt de XML via zijn pad in de XML-variabele geladen.
-	Als de XML fouten bevat geeft dit al foutmeldingen. Zorg er voor dat 'node names' (<waarde></waarde>) geen spaties bevatten!
-		Aanpassingen losse datum-velden
-	Naast de events bevat de XML ook nog datum-velden in de <values>_groep. Aangezien deze uniek zijn moeten ze per stuk worden gezocht en gesplitst. 
-	Werking identiek aan de events.
-	Huidige velden die worden gezocht: case.date.current, .date_of_registration (full en niet full), .date_of_completion (full en niet full), .date_target, system.current_date
-		XML-Opslaan
-	Bepalen of de XML mag worden overschreven (op basis van de input aan het begin van het script)
-	Indien er niet mag worden overschreven dan wordt er een xml aangemaakt met _data-gesplitst toegevoegd aan de originele bestandsnaam.
-	Tijdens het opslaan wordt tevens een korte Sleep opgeroepen, omdat het script anders te snel wordt uitgevoerd en tot problemen kan leiden.
-Dit deel eindigt met een dubbele min op de Globale aantal_variabele voor de While_loop
--->
 </xml>
